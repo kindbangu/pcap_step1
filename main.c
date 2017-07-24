@@ -61,8 +61,9 @@ int main(int argc, char *argv[])
     while(res = pcap_next_ex(handle,&header,&packet)>=0){
         if(res == 0)
             continue;
-        if(cnt)
+        if(cnt) /* Cnt: 10, 9, 8, 7,... */
             break;
+        cnt--;
 
         /* Print Ethernet packet */
         eth_header = (struct pkt_eth*)packet;
